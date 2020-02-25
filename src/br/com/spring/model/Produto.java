@@ -1,11 +1,15 @@
 package br.com.spring.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Produto {
@@ -16,6 +20,16 @@ public class Produto {
 	private String nome;
 	private String descricao;
 	private BigDecimal valor;
+	@OneToMany(mappedBy = "produto", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<ItensPedido> itensPedido;
+	
+		
+	public List<ItensPedido> getItensPedido() {
+		return itensPedido;
+	}
+	public void setItensPedido(List<ItensPedido> itensPedido) {
+		this.itensPedido = itensPedido;
+	}
 	public Long getId() {
 		return id;
 	}

@@ -6,13 +6,10 @@
 	<persistence-unit name="spring">
 		<!-- provedor/implementacao do JPA -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<!-- entidade mapeada -->
-		
-		
-		<properties>
-		
+						
+		<properties>	
 
-						<!-- propriedades do hibernate -->
+			<!-- propriedades do hibernate -->
 			<property name="hibernate.dialect"
 				value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 			<property name="hibernate.show_sql" value="true" />

@@ -1,10 +1,15 @@
 package br.com.spring.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Cliente {
@@ -15,6 +20,18 @@ public class Cliente {
 	private String nome;
 	@Column(unique = true)
 	private String email;
+	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Pedido> itensPedidos;
+	
+	
+	
+	public List<Pedido> getItensPedidos() {
+		return itensPedidos;
+	}
+
+	public void setItensPedidos(List<Pedido> itensPedidos) {
+		this.itensPedidos = itensPedidos;
+	}
 
 	public Long getId() {
 		return id;
